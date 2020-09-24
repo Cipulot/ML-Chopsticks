@@ -18,3 +18,4 @@ Solution to gather user behavior information when using chopsticks and compile a
 ## To do
 
 ## Reference
+The documentation about the Tactigon board can be found [here](https://github.com/TactigonTeam/Docs).
