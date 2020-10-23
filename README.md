@@ -20,6 +20,7 @@ The RPi, once it's booted up, execute a python code the will search for the Tact
 * [Python 3.7.7](https://www.python.org/downloads/release/python-377/) - Win64
 * Arduino IDE
 ### Note
+The ML algorithm is still a work in progress and, for now, I will not be able to post it 😢 .
 
 ## Specifications
 The project was developed and tested on the following hardware:
@@ -28,6 +29,7 @@ The project was developed and tested on the following hardware:
 ## Known issues
 
 ## To do
+The Raspberry Pi 3 is a bit too large to make a "real" portable version of the system. Something with the footprint of the RPi Zero or a cut-down version like the [RPi 3 A+](https://www.raspberrypi.org/products/raspberry-pi-3-model-a-plus/?resellerType=home) would do the trick.
 
 ## Reference
 The documentation about the Tactigon board can be found [here](https://github.com/TactigonTeam/Docs).
