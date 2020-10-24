@@ -1,0 +1,10 @@
+  
+markdown: GFM
+theme: jekyll-theme-architect
+
+# Site Settings
+encoding: utf-8 # Make sure the encoding is right
+lang: en-US # Set the site language
+title: "ML-Chopsticks"
+description: ""
+logo: ""
