@@ -25,7 +25,7 @@ The ML algorithm is still a work in progress and, for now, I will not be able to
 ## Specifications
 The project was developed and tested on the following hardware:
 * [Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/?resellerType=home)
-* [Tactigon One Board](https://www.nextind.eu/it/product/the-tactigon-one-it/)
+* [Tactigon One Board](https://www.nextind.eu/product/the-tactigon-one/)
 ## Known issues
 
 ## To do
