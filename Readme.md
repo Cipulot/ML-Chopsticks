@@ -5,6 +5,15 @@ Solution to gather user behavior information when using chopsticks and compile a
 Following a gimmick that popped up at the end of last [CWF](https://scottkwang.github.io/CodeWithFriends-Spring2020/) edition the project involves chopsticks. The pitch was to create a "5G enabled" chopstick but I then realized that it was a bit impractical (at least for now). Putting the 5G part of the idea aside, this project will enable the user, thanks to ML based models, to gather information about his/her usage behaviour and all sorts of statistics of use.
 
 ## General features
+The projects aims to develop a system that can be used to collect and process information about user's usage of chopsticks.
+
+To do so the system is based on 2 main components:
+
+* Data collection and model building
+* Usage detector and statistics generator
+
+### Data collection and model building
+In order to evaluate the movements that the user achieve with chopsticks it's necessary to create a base model around some kind of gesture. In this case a feasible gesture set could be something like: ```GestList = ['picked up', 'put down', 'taking a bite', etc...] ```. As for more "mainstream" ML models it's necessary that you chose those gestures ahead of the model creation and, in order to more easily train the model, record a relatively large and diversified variation of the same gesture, i.e., picking up the chopstick from different angles, take pauses of various duration between one bite and the other.
 
 ## Tech used
 For the Tactigon One Board I've used the Arduino IDE to develop a basic BLE peripheral code. The main function gathers IMU data with a 50Hz timing and then puts it into a buffer that will be used to update the BLE characteristic. A simple "if-else" statement is used to check the Bluetooth connection so that if it drops or didn't happened at all the data won't be "pushed out", saving battery.
