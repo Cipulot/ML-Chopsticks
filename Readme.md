@@ -24,6 +24,9 @@ Here's a visual representation of the accelerometer data received by the RPi:
 
 ![](https://github.com/Cipulot/ML-Chopsticks/blob/main/ML-Chopsticks/media/Sensor%20Graph.gif?raw=true)
 
+### Usage detector and statistics generator
+👷Work in progress...👷
+
 ## Tech used
 For the Tactigon One Board I've used the Arduino IDE to develop a basic BLE peripheral code. The main function gathers IMU data with a 50Hz timing and then puts it into a buffer that will be used to update the BLE characteristic. A simple "if-else" statement is used to check the Bluetooth connection so that if it drops or didn't happened at all the data won't be "pushed out", saving battery.
 
