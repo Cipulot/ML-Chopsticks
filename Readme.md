@@ -12,8 +12,17 @@ To do so the system is based on 2 main components:
 * Data collection and model building
 * Usage detector and statistics generator
 
+The code flashed on the Tactigon One Board is shared for both, since its main purpose it to collect and expose sensor data (accelerometer and gyroscope) on the BLE Characteristic. The RPi code is Python based and, depending on the component that is required by the user, serves as ML model generator or as gesture and statistics recognition.
+This is achieved by implementing an ```if __name__ == "__main__":``` construct in the code, allowing the code to be called "by itself" or imported in other scripts as a module, accessing all its sub functions.
+
 ### Data collection and model building
 In order to evaluate the movements that the user achieve with chopsticks it's necessary to create a base model around some kind of gesture. In this case a feasible gesture set could be something like: ```GestList = ['picked up', 'put down', 'taking a bite', etc...] ```. As for more "mainstream" ML models it's necessary that you chose those gestures ahead of the model creation and, in order to more easily train the model, record a relatively large and diversified variation of the same gesture, i.e., picking up the chopstick from different angles, take pauses of various duration between one bite and the other.
+
+The raw data is then filtered for unwanted and/or corrupted data that might come through and it's feed to the ML model generator. After the process is complete a final model file is generated and will be used for future use in detection and statistics mode.
+
+Here's a visual representation of the accelerometer data received by the RPi:
+
+![](https://github.com/Cipulot/ML-Chopsticks/blob/main/ML-Chopsticks/media/Sensor%20Graph.gif?raw=true)
 
 ## Tech used
 For the Tactigon One Board I've used the Arduino IDE to develop a basic BLE peripheral code. The main function gathers IMU data with a 50Hz timing and then puts it into a buffer that will be used to update the BLE characteristic. A simple "if-else" statement is used to check the Bluetooth connection so that if it drops or didn't happened at all the data won't be "pushed out", saving battery.
