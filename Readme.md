@@ -5,7 +5,7 @@ Solution to gather user behavior information when using chopsticks and compile a
 Following a gimmick that popped up at the end of last [CWF](https://scottkwang.github.io/CodeWithFriends-Spring2020/) edition the project involves chopsticks. The pitch was to create a "5G enabled" chopstick but I then realized that it was a bit impractical (at least for now). Putting the 5G part of the idea aside, this project will enable the user, thanks to ML based models, to gather information about his/her usage behaviour and all sorts of statistics of use.
 
 ## General features
-The projects aims to develop a system that can be used to collect and process information about user's usage of chopsticks.
+The project aims to develop a system that can be used to collect and process information about user's usage of chopsticks.
 
 To do so the system is based on 2 main components:
 
@@ -24,11 +24,16 @@ Here's a visual representation of the accelerometer data received by the RPi:
 
 The raw data is then filtered for unwanted and/or corrupted data that might come through and it is feed to the ML model generator. Before exporting the model file an evaluation process is executed. Like for image object detection a small sample pool received is put aside and is used in this procedure to determine if the model is reliable or not. In case of a negative response the user is prompted to redo the entire process. The final step is to output a final model file that will be used for future use in detection and statistics mode.
 
-### Usage detector and statistics generator
-👷Work in progress...👷
+### Usage detector and statistics generator 👷Work in progress...👷
+The first step to recognize the gestures is to have some kind of data that can be used to determine the movements in 3-D space. To do so the BLE protocol is the best choice since it combines relatively low latency and low power consumption, making a portable device way easier to develop.
+The data is exposed on a BLE characteristics in notification, this allows the RPi to read the data and use it for the evaluation. Obviously the readings from the IMU need to be packed as bytes and then later unpacked by the RPi, otherwise the data would be pretty much only a bunch on seemingly random data.
+
+Example of the RPi reading the characteristic (new data is received every time a push button is pressed on the Tactigon One). At the top of the terminal, right before the data starts to come through, there's the Char Value Handle (that ```14``` equivalent to ```0x0e```).
+
+![](https://github.com/Cipulot/ML-Chopsticks/blob/main/ML-Chopsticks/media/RPI%20BLE.gif?raw=true)
 
 ## Tech used
-For the Tactigon One Board I've used the Arduino IDE to develop a basic BLE peripheral code. The main function gathers IMU data with a 50Hz timing and then puts it into a buffer that will be used to update the BLE characteristic. A simple "if-else" statement is used to check the Bluetooth connection so that if it drops or didn't happened at all the data won't be "pushed out", saving battery.
+For the Tactigon One Board I've used the Arduino IDE to develop a basic BLE peripheral code. The main function gathers IMU data with a 50Hz timing and then puts it into a buffer that will be used to update the BLE characteristic. A simple ```if-else``` statement is used to check the Bluetooth connection so that if it drops or didn't happened at all the data won't be "pushed out", saving battery.
 
 The RPi, once it's booted up, execute a python code the will search for the Tactigon and connect to it. It then subscribes to the BLE characteristic in notification and waits for new data pushed by the Tactigon One Board. It then feeds, in real-time, every data collected to a custom ML algorithm (scikit-learn library based) that will the following operations:
 
