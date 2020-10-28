@@ -4,6 +4,10 @@ Solution to gather user behavior information when using chopsticks and compile a
 ## Inspiration
 Following a gimmick that popped up at the end of last [CWF](https://scottkwang.github.io/CodeWithFriends-Spring2020/) edition the project involves chopsticks. The pitch was to create a "5G enabled" chopstick but I then realized that it was a bit impractical (at least for now). Putting the 5G part of the idea aside, this project will enable the user, thanks to ML based models, to gather information about his/her usage behaviour and all sorts of statistics of use.
 
+<p align="center">
+  <img width="424" height="278" src="https://github.com/Cipulot/ML-Chopsticks/blob/main/ML-Chopsticks/media/Chopsticks.gif?raw=true">
+</p>
+
 ## General features
 The project aims to develop a system that can be used to collect and process information about user's usage of chopsticks.
 
