@@ -45,6 +45,8 @@ The RPi, once it's booted up, execute a python code the will search for the Tact
 * Segmentation: the data comes through at a timing of 50Hz and that is a bit problematic... It has advantages, like more fine detection of movements but introduces a layer of complication for the recognition that later will be executed. This step ensure that a valid interval of data is feed into the recognition algorithm.
 * Recognition and flagging: the data segment provided will pass through a custom ML code that will calculate the confidence value for a specific gesture from the pre-trained model that is specified into the code. Once a gesture is recognized it will be flagged by the algorithm, which will later record it into a log file for later use.
 
+![](https://www.mdpi.com/sensors/sensors-18-00679/article_deploy/html/images/sensors-18-00679-g001.png)
+
 ## Built with
 * [scikit-learn](https://scikit-learn.org/stable/) - installed via pip
 * [Python 3.7.7](https://www.python.org/downloads/release/python-377/) - Win64
