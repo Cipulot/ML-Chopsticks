@@ -12,17 +12,17 @@ To do so the system is based on 2 main components:
 * Data collection and model building
 * Usage detector and statistics generator
 
-The code flashed on the Tactigon One Board is shared for both, since its main purpose it to collect and expose sensor data (accelerometer and gyroscope) on the BLE Characteristic. The RPi code is Python based and, depending on the component that is required by the user, serves as ML model generator or as gesture and statistics recognition.
+The code flashed on the Tactigon One Board is shared for both, since its main purpose is to collect and expose sensor data (accelerometer and gyroscope) on the BLE Characteristic. The RPi code is Python based and, depending on the component that is required by the user, serves as ML model generator or gesture and statistics recognition.
 This is achieved by implementing an ```if __name__ == "__main__":``` construct in the code, allowing the code to be called "by itself" or imported in other scripts as a module, accessing all its sub functions.
 
 ### Data collection and model building
-In order to evaluate the movements that the user achieve with chopsticks it's necessary to create a base model around some kind of gesture. In this case a feasible gesture set could be something like: ```GestList = ['picked up', 'put down', 'taking a bite', etc...] ```. As for more "mainstream" ML models it's necessary that you chose those gestures ahead of the model creation and, in order to more easily train the model, record a relatively large and diversified variation of the same gesture, i.e., picking up the chopstick from different angles, take pauses of various duration between one bite and the other.
+In order to evaluate the movements that the user achieve with chopsticks it's necessary to create a base model around some kind of gesture. In this case a feasible gesture set could be something like: ```GestList = ['picked up', 'put down', 'taking a bite', etc...] ```. As for more "mainstream" ML models, it's necessary that you chose those gestures ahead of the model creation and, in order to more easily train the model, record a relatively large and diversified variation of the same gesture, i.e., picking up the chopstick from different angles, take pauses of various duration between one bite and the other.
 
 Here's a visual representation of the accelerometer data received by the RPi:
 
 ![](https://github.com/Cipulot/ML-Chopsticks/blob/main/ML-Chopsticks/media/Sensor%20Graph.gif?raw=true)
 
-The raw data is then filtered for unwanted and/or corrupted data that might come through and it is feed to the ML model generator. Before exporting the model file an evaluation process is executed. Like for image object detection a small sample pool received is put aside and is used in this procedure to determine if the model is reliable or not. In case of a negative response the user is prompted to redo the entire process. The final step is to output a final model file that will be used for future use in detection and statistics mode.
+The raw data is then filtered for unwanted and/or corrupted data that might come through and it is feed to the ML model generator. Before exporting the model file an evaluation process is executed. Like for image object detection a small sample pool received is put aside and is used in this procedure to determine if the model is reliable or not. In case of a negative response the user is prompted to redo the entire process. The final step is to output a final model file that will be used in detection and statistics mode.
 
 ### Usage detector and statistics generator 👷Work in progress...👷
 The first step to recognize the gestures is to have some kind of data that can be used to determine the movements in 3-D space. To do so the BLE protocol is the best choice since it combines relatively low latency and low power consumption, making a portable device way easier to develop.
